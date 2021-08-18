@@ -3,6 +3,7 @@ import { createTableController } from "../useCases/CreateTable";
 import { celebrate, Joi, Segments } from "celebrate";
 import { insertTeamInTableController } from "../useCases/InsertTeamInTable";
 import { showTableController } from "../useCases/ShowTable";
+import { addPointController } from "../useCases/AddPoint";
 const router = Router();
 
 router.post(
@@ -35,6 +36,10 @@ router.put(
 
 router.get("/:id", (request, response) => {
   return showTableController.handle(request, response);
+});
+
+router.post("/insert-point", (request, response) => {
+  return addPointController.handle(request, response);
 });
 
 export default router;

@@ -7,15 +7,12 @@ export class LocalTablesRepository implements ITablesRepository {
 
   async save(table: Table): Promise<void> {
     this.table.push(table);
-    console.log(this);
   }
   async insertTeam(team: Team, indexTable: number): Promise<void> {
     this.table[indexTable].insertTeam(team);
   }
   async getTableByIndex(indexTable: number): Promise<Table | undefined> {
-    const a = this.table[indexTable];
-    console.log(this);
-    return a;
+    return this.table[indexTable];
   }
   async updateTable(table: Table, indexTable: number): Promise<void> {
     this.table[indexTable] = table;

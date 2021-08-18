@@ -1,5 +1,5 @@
 export class Point {
-  private value: number[];
+  private value: number[] = [];
   public getCurrentValue(): number {
     let lastValueIndex: number = this.value.length - 1;
     if (lastValueIndex < 0) {

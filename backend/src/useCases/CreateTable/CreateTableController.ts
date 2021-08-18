@@ -17,7 +17,7 @@ export class CreateTableController {
 
       return response
         .status(201)
-        .json({ message: "Tabela criada com sucesso" });
+        .json({ message: "Table successfully created" });
     } catch (err) {
       return response.status(400).json({
         message: err.message || "Unexpected error.",

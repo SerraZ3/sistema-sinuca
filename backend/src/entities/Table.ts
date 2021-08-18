@@ -50,6 +50,9 @@ export class Table {
     if (index > numberOfTeams - 1) return undefined;
     return this.teams[index];
   }
+  public insertPointByTeamIndex(index: number, pointValue: number): void {
+    this.teams[index].setPoint(pointValue);
+  }
   public addTeam(team: Team): boolean {
     if (this.teams.length < teamsConfig.maxTeams) {
       this.teams.push(team);

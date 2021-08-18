@@ -11,7 +11,6 @@ export class InsertTeamInTableUseCase {
   async execute(data: IInsertTeamInTableDTO) {
     const { indexTable, indexTeam } = data;
     const table = await this.tablesRepository.getTableByIndex(indexTable);
-    console.log(table);
 
     if (!table) throw Error("Table not exist");
     const team = await this.teamsRepository.getTeamByIndex(indexTeam);
