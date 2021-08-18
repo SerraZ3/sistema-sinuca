@@ -1,6 +1,11 @@
 import teamsConfig from "../config/teams";
 import { Team } from "./Team";
 
+export interface IInsertTeamInTableDTO {
+  indexTeam: number;
+  indexTable: number;
+}
+
 export interface ICreateTableDTO {
   name: string;
   award: string;
@@ -13,7 +18,7 @@ export class Table {
   private award: string;
   private maxPoint: number;
   private descriptionPoint: string;
-  private teams: Team[];
+  private teams: Team[] = [];
 
   constructor(data: ICreateTableDTO) {
     Object.assign(this, data);
@@ -32,6 +37,9 @@ export class Table {
   }
   public getTeams(): Team[] {
     return this.teams;
+  }
+  public insertTeam(team: Team): void {
+    this.teams.push(team);
   }
   public findTeamByIndex(index: number): Team | undefined {
     let numberOfTeams: number = this.teams.length;

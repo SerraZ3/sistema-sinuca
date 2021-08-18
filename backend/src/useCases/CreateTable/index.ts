@@ -1,8 +1,6 @@
-import { LocalTablesRepository } from "../../repositories/TablesRepository/implementations/LocalTablesRepository";
+import { localTablesRepository } from "../../config/database";
 import { CreateTableController } from "./CreateTableController";
 import { CreateTableUseCase } from "./CreateTableUseCase";
-
-const localTablesRepository = new LocalTablesRepository();
 
 const createTableUseCase = new CreateTableUseCase(localTablesRepository);
 

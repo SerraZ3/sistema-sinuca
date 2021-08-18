@@ -1,8 +1,6 @@
-import { LocalTeamsRepository } from "../../repositories/TeamsRepository/implementations/LocalTeamsRepository";
+import { localTeamsRepository } from "../../config/database";
 import { CreateTeamController } from "./CreateTeamController";
 import { CreateTeamUseCase } from "./CreateTeamUseCase";
-
-const localTeamsRepository = new LocalTeamsRepository();
 
 const createTeamUseCase = new CreateTeamUseCase(localTeamsRepository);
 
