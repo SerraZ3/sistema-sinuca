@@ -1,6 +1,10 @@
 import teamsConfig from "../config/teams";
 import { Team } from "./Team";
 
+export interface IShowTableDTO {
+  indexTable: number;
+}
+
 export interface IInsertTeamInTableDTO {
   indexTeam: number;
   indexTable: number;

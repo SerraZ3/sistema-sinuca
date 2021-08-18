@@ -2,6 +2,7 @@ import { Router } from "express";
 import { createTableController } from "../useCases/CreateTable";
 import { celebrate, Joi, Segments } from "celebrate";
 import { insertTeamInTableController } from "../useCases/InsertTeamInTable";
+import { showTableController } from "../useCases/ShowTable";
 const router = Router();
 
 router.post(
@@ -31,5 +32,9 @@ router.put(
     return insertTeamInTableController.handle(request, response);
   }
 );
+
+router.get("/:id", (request, response) => {
+  return showTableController.handle(request, response);
+});
 
 export default router;
