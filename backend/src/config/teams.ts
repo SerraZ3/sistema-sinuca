@@ -1,3 +1,3 @@
 export default {
-  maxTeams: process.env.MAX_TEAMS || 15,
+  maxTeams: process.env.MAX_TEAMS || 10,
 };
