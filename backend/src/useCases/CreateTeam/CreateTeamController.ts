@@ -19,7 +19,9 @@ export class CreateTeamController {
         point,
       });
 
-      return response.status(201).json({ message: "Time criado com sucesso" });
+      return response
+        .status(201)
+        .json({ message: "Team successfully created" });
     } catch (err) {
       return response.status(400).json({
         message: err.message || "Unexpected error.",

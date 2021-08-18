@@ -13,9 +13,9 @@ export class InsertTeamInTableUseCase {
     const table = await this.tablesRepository.getTableByIndex(indexTable);
     console.log(table);
 
-    if (!table) throw Error("Tabela não existe");
+    if (!table) throw Error("Table not exist");
     const team = await this.teamsRepository.getTeamByIndex(indexTeam);
-    if (!team) throw Error("Time não existe");
+    if (!team) throw Error("Team not exist");
     table.addTeam(team);
     await this.tablesRepository.updateTable(table, indexTable);
   }
