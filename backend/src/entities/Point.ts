@@ -2,6 +2,9 @@ export class Point {
   private value: number[];
   public getCurrentValue(): number {
     let lastValueIndex: number = this.value.length - 1;
+    if (lastValueIndex < 0) {
+      return 0;
+    }
     return this.value[lastValueIndex];
   }
   public getAllValues(): number[] {
@@ -11,8 +14,11 @@ export class Point {
     this.value.push(newValue);
   }
   public sumValues(): number {
-    return this.value.reduce(
-      (acumulator, currentValue) => acumulator + currentValue
-    );
+    if (this.value.length > 0) {
+      return this.value.reduce(
+        (acumulator, currentValue) => acumulator + currentValue
+      );
+    }
+    return 0;
   }
 }

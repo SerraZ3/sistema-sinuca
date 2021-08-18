@@ -1,11 +1,11 @@
-import { LocalTablesRepository } from "../../repositories/TablesRepository/implementations/LocalTablesRepository";
-import { CreateTableController } from "./CreateTableController";
-import { CreateTableUseCase } from "./CreateTableUseCase";
+import { LocalTeamsRepository } from "../../repositories/TeamsRepository/implementations/LocalTeamsRepository";
+import { CreateTeamController } from "./CreateTeamController";
+import { CreateTeamUseCase } from "./CreateTeamUseCase";
 
-const localTablesRepository = new LocalTablesRepository();
+const localTeamsRepository = new LocalTeamsRepository();
 
-const createTableUseCase = new CreateTableUseCase(localTablesRepository);
+const createTeamUseCase = new CreateTeamUseCase(localTeamsRepository);
 
-const createTableController = new CreateTableController(createTableUseCase);
+const createTeamController = new CreateTeamController(createTeamUseCase);
 
-export { createTableUseCase, createTableController };
+export { createTeamUseCase, createTeamController };

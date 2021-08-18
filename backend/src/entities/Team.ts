@@ -1,16 +1,19 @@
 import { Player } from "./Player";
 import { Point } from "./Point";
-
+export interface ICreateTeamDTO {
+  name: string;
+  player1: Player;
+  player2: Player;
+  point: Point;
+}
 export class Team {
   private name: string;
   private player1: Player;
   private player2: Player;
   private point: Point;
 
-  constructor(newName: string, newPlayer1: Player, newPlayer2: Player) {
-    this.name = newName;
-    this.player1 = newPlayer1;
-    this.player2 = newPlayer2;
+  constructor(data: ICreateTeamDTO) {
+    Object.assign(this, data);
   }
 
   public getName(): string {
