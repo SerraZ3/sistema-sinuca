@@ -11,6 +11,7 @@ function Routes() {
       <Route path={"/create-team"} exact strict component={Home} />
       <Route path={"/create-table"} exact strict component={Home} />
       <Route path={"/insert-team"} exact strict component={Home} />
+      <Route path={"/add-points"} exact strict component={Home} />
     </Router>
   );
 }
