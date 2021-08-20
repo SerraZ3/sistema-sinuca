@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import colors from "../../config/colors";
 export const Container = styled.div`
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   text-align: center;
   background-color: ${colors.background1};
 `;

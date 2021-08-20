@@ -3,7 +3,7 @@ import { Team } from "../../entities/Team";
 
 export interface ITablesRepository {
   save(table: Table): Promise<void>;
-  insertTeam(team: Team, tableIndex: number): Promise<void>;
+  insertTeam(team: Team, tableIndex: number): Promise<boolean>;
   getTableByIndex(indexTable: number): Promise<Table | undefined>;
   getTeamInTableByIndex(
     indexTable: number,

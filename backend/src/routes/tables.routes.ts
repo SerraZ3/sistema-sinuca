@@ -46,8 +46,18 @@ router.get("/", (request, response) => {
   return getTablesController.handle(request, response);
 });
 
-router.post("/insert-point", (request, response) => {
-  return addPointController.handle(request, response);
-});
+router.post(
+  "/insert-point",
+  celebrate({
+    [Segments.BODY]: {
+      indexTeam: Joi.number().integer().required(),
+      indexTable: Joi.number().integer().required(),
+      pointValue: Joi.number().integer().required(),
+    },
+  }),
+  (request, response) => {
+    return addPointController.handle(request, response);
+  }
+);
 
 export default router;

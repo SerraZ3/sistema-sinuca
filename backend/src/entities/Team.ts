@@ -32,6 +32,7 @@ export class Team {
   public getPoints(): Point {
     return this.point;
   }
+
   public setPoint(newPoint: number): void {
     this.point.setValue(newPoint);
   }

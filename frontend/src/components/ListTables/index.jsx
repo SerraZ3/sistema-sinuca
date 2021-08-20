@@ -14,6 +14,7 @@ function ListTables({ tables }) {
             <Th>Prêmiação</Th>
             <Th>Pontuação máxima</Th>
             <Th>Descrição da pontuação</Th>
+            <Th>Status</Th>
           </Tr>
         </thead>
         <tbody>
@@ -25,6 +26,7 @@ function ListTables({ tables }) {
                 <Td>{table.award}</Td>
                 <Td>{table.maxPoint}</Td>
                 <Td>{table.descriptionPoint}</Td>
+                <Td>{table.isActive ? "Ativo" : "Finalizado"}</Td>
               </tr>
             ))}
         </tbody>

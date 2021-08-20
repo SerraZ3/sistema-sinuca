@@ -23,6 +23,8 @@ export class Table {
   private maxPoint: number;
   private descriptionPoint: string;
   private teams: Team[] = [];
+  private teamWinnerIndex: number;
+  private isActive: boolean = true;
 
   constructor(data: ICreateTableDTO) {
     Object.assign(this, data);
@@ -61,9 +63,15 @@ export class Table {
     return false;
   }
   public checkWinner(): Team | undefined {
-    return this.teams.find(
+    const indexWinner = this.teams.findIndex(
       (team) => team.getPoints().sumValues() >= this.maxPoint
     );
+    if (indexWinner >= 0) {
+      this.teamWinnerIndex = indexWinner;
+      this.isActive = false;
+      return this.teams[indexWinner];
+    }
+    return undefined;
   }
   public orderTeamByPoint(): void {
     this.teams.map((team) => team.getPoints().sumValues());

@@ -20,8 +20,7 @@ function AddPoint() {
   const history = useHistory();
   const handleRedirect = (url) => history.push(url);
 
-  const handleSearchTable = async (event) => {
-    event.preventDefault();
+  const searchTable = async () => {
     try {
       if (!indexTable) {
         throw Error("Preencha os campos");
@@ -31,6 +30,10 @@ function AddPoint() {
     } catch (error) {
       error.message ? alert(error.message) : alert("Erro ao buscar tabela");
     }
+  };
+  const handleSearchTable = async (event) => {
+    event.preventDefault();
+    searchTable();
   };
   const addPoint = (idxTable) => {
     return async (idxTeam, newPoint) => {
@@ -71,7 +74,10 @@ function AddPoint() {
           <ListTeams
             teams={table.teams}
             showPoints
+            tableActive={table.isActive}
+            teamWinner={table.teamWinnerIndex}
             addPoint={addPoint(indexTable)}
+            refreshTable={searchTable}
           />
         </>
       )}

@@ -27,7 +27,6 @@ function InsertTeamInTable() {
     const getTables = async () => {
       try {
         const responseTables = await serviceGetTables();
-        console.log(responseTables);
         setTables(responseTables.data);
       } catch (error) {
         alert("Erro ao buscar tabelas");
@@ -37,7 +36,6 @@ function InsertTeamInTable() {
     const getTeams = async () => {
       try {
         const responseTeams = await serviceGetTeams();
-        console.log(responseTeams);
         setTeams(responseTeams.data);
       } catch (error) {
         alert("Erro ao buscar tabelas");
@@ -54,7 +52,11 @@ function InsertTeamInTable() {
       await insertTeamInTable({ indexTeam, indexTable });
       alert("Time cadastrado com sucesso");
     } catch (error) {
-      error.message ? alert(error.message) : alert("Erro ao criar time");
+      error.message && error.response.status !== 400
+        ? alert(error.message)
+        : alert(
+            "Erro ao vincular time. Verifique os indentificadores e a quantidade de time vinculados a tabela"
+          );
     }
   };
   return (

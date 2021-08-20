@@ -15,7 +15,12 @@ export class InsertTeamInTableUseCase {
     if (!table) throw Error("Table not exist");
     const team = await this.teamsRepository.getTeamByIndex(indexTeam);
     if (!team) throw Error("Team not exist");
-    table.addTeam(team);
-    await this.tablesRepository.updateTable(table, indexTable);
+    const statusInsert = await this.tablesRepository.insertTeam(
+      team,
+      indexTable
+    );
+    if (!statusInsert) {
+      throw Error("Limite de times alcançado na tabela");
+    }
   }
 }
