@@ -1,42 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Table, Td, Th, Title, Tr } from "./styles";
-import serviceGetTeams from "../../services/requests/getTeams";
 
-function ListTables() {
-  const [teams, setTeams] = useState([]);
-  useEffect(() => {
-    const getTeams = async () => {
-      try {
-        const responseTeams = await serviceGetTeams();
-        setTeams(responseTeams.data);
-      } catch (error) {
-        alert("Erro ao buscar tabelas");
-      }
-    };
-    getTeams();
-  }, []);
+function ListTables({ tables }) {
   return (
     <>
       <br />
-      <Title>Times</Title>
+      <Title>Tabela</Title>
       <Table>
         <thead>
           <Tr>
             <Th>Identificador</Th>
             <Th>Nome</Th>
-            <Th>Jogador 1</Th>
-            <Th>Jogador 2</Th>
+            <Th>Prêmiação</Th>
+            <Th>Pontuação máxima</Th>
+            <Th>Descrição da pontuação</Th>
           </Tr>
         </thead>
         <tbody>
-          {teams.map((table, idx) => (
-            <tr>
-              <Td>{idx}</Td>
-              <Td>{table.name}</Td>
-              <Td>{table.player1.name}</Td>
-              <Td>{table.player2.name}</Td>
-            </tr>
-          ))}
+          {tables &&
+            tables.map((table, idx) => (
+              <tr key={idx}>
+                <Td>{idx}</Td>
+                <Td>{table.name}</Td>
+                <Td>{table.award}</Td>
+                <Td>{table.maxPoint}</Td>
+                <Td>{table.descriptionPoint}</Td>
+              </tr>
+            ))}
         </tbody>
       </Table>
     </>

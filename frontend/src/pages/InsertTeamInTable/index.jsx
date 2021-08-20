@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import ListTables from "../../components/ListTables";
 import ListTeams from "../../components/ListTeams";
 import insertTeamInTable from "../../services/requests/insertTeamInTable";
+import serviceGetTeams from "../../services/requests/getTeams";
+import serviceGetTables from "../../services/requests/getTables";
 import {
   ButtonSubmit,
   Container,
@@ -18,7 +20,31 @@ function InsertTeamInTable() {
   const [indexTable, setIndexTable] = useState("");
   const history = useHistory();
   const handleRedirect = (url) => history.push(url);
-
+  const [teams, setTeams] = useState([]);
+  const [tables, setTables] = useState([]);
+  useEffect(() => {}, []);
+  useEffect(() => {
+    const getTables = async () => {
+      try {
+        const responseTables = await serviceGetTables();
+        console.log(responseTables);
+        setTables(responseTables.data);
+      } catch (error) {
+        alert("Erro ao buscar tabelas");
+      }
+    };
+    getTables();
+    const getTeams = async () => {
+      try {
+        const responseTeams = await serviceGetTeams();
+        console.log(responseTeams);
+        setTeams(responseTeams.data);
+      } catch (error) {
+        alert("Erro ao buscar tabelas");
+      }
+    };
+    getTeams();
+  }, []);
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -59,8 +85,8 @@ function InsertTeamInTable() {
           onClick={() => handleRedirect("/")}
         />
       </Form>
-      <ListTeams />
-      <ListTables />
+      <ListTeams teams={teams} />
+      <ListTables tables={tables} />
     </Container>
   );
 }
