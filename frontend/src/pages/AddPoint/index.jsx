@@ -37,7 +37,7 @@ function AddPoint() {
   };
   return (
     <Container>
-      <Title>Vincular times a tabela</Title>
+      <Title>Busque por uma tabela</Title>
       <Form onSubmit={handleSearchTable}>
         <ContainerForm>
           <LabelInput>Identificador da tabela</LabelInput>
