@@ -33,7 +33,7 @@ function CreateTable() {
   };
   return (
     <Container>
-      <Title>Adicionar Tabela</Title>
+      <Title>Criar Tabela</Title>
       <Form onSubmit={handleSubmit}>
         <ContainerForm>
           <LabelInput>Nome</LabelInput>
@@ -68,7 +68,7 @@ function CreateTable() {
           />
         </ContainerForm>
 
-        <ButtonSubmit type="submit" value="Enviar" />
+        <ButtonSubmit type="submit" value="Cadastrar" />
         <ButtonSubmit
           type="button"
           value="Voltar menu principal"
