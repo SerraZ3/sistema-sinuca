@@ -1,12 +1,33 @@
 import styled from "styled-components";
 import colors from "../../config/colors";
+
 export const Container = styled.div`
   height: 100vh;
-  text-align: center;
-  background-color: ${colors.background1};
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00000088;
 `;
+export const Modal = styled.div`
+  background-color: ${colors.background1};
+  height: 60%;
+  width: 60%;
+  border-radius: 5px;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  body {
+    overflow: hidden;
+  }
+`;
+export const Content = styled.div``;
 export const Title = styled.h1`
-  padding-top: 20px;
+  padding: 20px 0;
   color: ${colors.primary};
   font-weight: 700;
 `;
@@ -20,7 +41,7 @@ export const LabelInput = styled.label`
   padding: 5px 5px;
 `;
 export const Form = styled.form`
-  width: 30%;
+  width: 100%;
   margin: 0 auto;
 `;
 export const Input = styled.input`
@@ -49,33 +70,5 @@ export const ButtonSubmit = styled.input`
     border: 2px solid ${colors.background2};
     color: ${colors.background2};
     font-weight: 700;
-  }
-`;
-export const Table = styled.table`
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  color: white;
-  text-align: left;
-
-  width: 60%;
-  margin: 10px auto;
-`;
-export const Td = styled.td`
-  border: 1px solid #ddd;
-  padding: 8px;
-`;
-export const Th = styled.th`
-  border: 1px solid #ddd;
-  padding: 8px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  background-color: #00acc1;
-`;
-export const Tr = styled.tr`
-  &:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  &:hover {
-    background-color: #ddd;
   }
 `;

@@ -12,6 +12,7 @@ export class LocalTablesRepository implements ITablesRepository {
     this.tables[indexTable].insertTeam(team);
   }
   async getTableByIndex(indexTable: number): Promise<Table | undefined> {
+    this.tables[indexTable].orderTeamByPoint();
     return this.tables[indexTable];
   }
   async updateTable(table: Table, indexTable: number): Promise<void> {

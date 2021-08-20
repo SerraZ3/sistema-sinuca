@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import ListTables from "../../components/ListTables";
 import ListTeams from "../../components/ListTeams";
+import serviceAddPoint from "../../services/requests/addPoint";
 import showTable from "../../services/requests/showTable";
 import {
   ButtonSubmit,
@@ -14,7 +15,6 @@ import {
 } from "./styles";
 
 function AddPoint() {
-  const [indexTeam, setIndexTeam] = useState("");
   const [indexTable, setIndexTable] = useState("");
   const [table, setTable] = useState();
   const history = useHistory();
@@ -29,8 +29,22 @@ function AddPoint() {
       const responseTable = await showTable({ indexTable });
       setTable(responseTable.data);
     } catch (error) {
-      error.message ? alert(error.message) : alert("Erro ao criar time");
+      error.message ? alert(error.message) : alert("Erro ao buscar tabela");
     }
+  };
+  const addPoint = (idxTable) => {
+    return async (idxTeam, newPoint) => {
+      try {
+        await serviceAddPoint({
+          indexTable: idxTable,
+          indexTeam: idxTeam,
+          pointValue: newPoint,
+        });
+        alert("Ponto adicionado com sucesso");
+      } catch (error) {
+        error.message ? alert(error.message) : alert("Erro ao adicionar ponto");
+      }
+    };
   };
   return (
     <Container>
@@ -51,8 +65,16 @@ function AddPoint() {
           onClick={() => handleRedirect("/")}
         />
       </Form>
-      <ListTables tables={table && [table]} />
-      <ListTeams teams={table && table.teams} />
+      {table && (
+        <>
+          <ListTables tables={[table]} />
+          <ListTeams
+            teams={table.teams}
+            showPoints
+            addPoint={addPoint(indexTable)}
+          />
+        </>
+      )}
 
       {/* <ContainerForm>
           <LabelInput>Identificador do time</LabelInput>

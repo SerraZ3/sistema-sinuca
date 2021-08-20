@@ -9,7 +9,7 @@ function ListTables({ tables }) {
       <Table>
         <thead>
           <Tr>
-            <Th>Identificador</Th>
+            <Th>ID</Th>
             <Th>Nome</Th>
             <Th>Prêmiação</Th>
             <Th>Pontuação máxima</Th>

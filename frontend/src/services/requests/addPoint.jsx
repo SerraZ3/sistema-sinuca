@@ -1,6 +1,6 @@
 import api from "../api";
 const addPoint = async ({ indexTable, indexTeam, pointValue }) => {
-  const responseAddPoint = await api.put("/tables/insert-point", {
+  const responseAddPoint = await api.post("/tables/insert-point", {
     indexTable,
     indexTeam,
     pointValue,

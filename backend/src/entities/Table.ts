@@ -65,4 +65,22 @@ export class Table {
       (team) => team.getPoints().sumValues() >= this.maxPoint
     );
   }
+  public orderTeamByPoint(): void {
+    this.teams.map((team) => team.getPoints().sumValues());
+    this.teams.sort((firstElement, secondElement) => {
+      if (
+        firstElement.getPoints().getTotalValues() <
+        secondElement.getPoints().getTotalValues()
+      ) {
+        return 1;
+      }
+      if (
+        firstElement.getPoints().getTotalValues() >
+        secondElement.getPoints().getTotalValues()
+      ) {
+        return -1;
+      }
+      return 0;
+    });
+  }
 }
