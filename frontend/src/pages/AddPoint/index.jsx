@@ -28,9 +28,6 @@ function AddPoint() {
       }
       const responseTable = await showTable({ indexTable });
       setTable(responseTable.data);
-      console.log(responseTable.data);
-      console.log("====");
-      alert("Time cadastrado com sucesso");
     } catch (error) {
       error.message ? alert(error.message) : alert("Erro ao criar time");
     }

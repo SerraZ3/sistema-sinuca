@@ -18,7 +18,7 @@ function ListTeams({ teams }) {
         <tbody>
           {teams &&
             teams.map((team, idx) => (
-              <tr>
+              <tr key={idx}>
                 <Td>{idx}</Td>
                 <Td>{team.name}</Td>
                 <Td>{team.player1.name}</Td>
