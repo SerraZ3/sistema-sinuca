@@ -3,18 +3,29 @@ import { Team } from "../../../entities/Team";
 import { ITablesRepository } from "../ITablesRepository";
 
 export class LocalTablesRepository implements ITablesRepository {
-  private table: Table[] = [];
+  private tables: Table[] = [];
 
   async save(table: Table): Promise<void> {
-    this.table.push(table);
+    this.tables.push(table);
   }
   async insertTeam(team: Team, indexTable: number): Promise<void> {
-    this.table[indexTable].insertTeam(team);
+    this.tables[indexTable].insertTeam(team);
   }
   async getTableByIndex(indexTable: number): Promise<Table | undefined> {
-    return this.table[indexTable];
+    return this.tables[indexTable];
   }
   async updateTable(table: Table, indexTable: number): Promise<void> {
-    this.table[indexTable] = table;
+    this.tables[indexTable] = table;
+  }
+  async getTeamInTableByIndex(
+    indexTable: number,
+    indexTeam: number
+  ): Promise<Team | undefined> {
+    const numberOfTables = this.tables.length;
+    if (indexTable > numberOfTables - 1) return undefined;
+    return this.tables[indexTable].findTeamByIndex(indexTeam);
+  }
+  async getTables(): Promise<Table[]> {
+    return this.tables;
   }
 }

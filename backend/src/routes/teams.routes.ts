@@ -1,6 +1,7 @@
+import { celebrate, Joi, Segments } from "celebrate";
 import { Router } from "express";
 import { createTeamController } from "../useCases/CreateTeam";
-import { celebrate, Joi, Segments } from "celebrate";
+import { getTeamsController } from "../useCases/GetTeams";
 const router = Router();
 
 router.post(
@@ -16,5 +17,8 @@ router.post(
     return createTeamController.handle(request, response);
   }
 );
+router.get("/", (request, response) => {
+  return getTeamsController.handle(request, response);
+});
 
 export default router;

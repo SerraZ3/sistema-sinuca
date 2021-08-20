@@ -1,5 +1,9 @@
 import { Player } from "./Player";
 import { Point } from "./Point";
+export interface IShowTeamDTO {
+  indexTeam: number;
+  indexTable: number;
+}
 export interface ICreateTeamDTO {
   name: string;
   player1: Player;

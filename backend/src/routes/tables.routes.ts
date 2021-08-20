@@ -1,9 +1,11 @@
-import { Router } from "express";
-import { createTableController } from "../useCases/CreateTable";
 import { celebrate, Joi, Segments } from "celebrate";
+import { Router } from "express";
+import { addPointController } from "../useCases/AddPoint";
+import { createTableController } from "../useCases/CreateTable";
+import { getTablesController } from "../useCases/GetTables";
 import { insertTeamInTableController } from "../useCases/InsertTeamInTable";
 import { showTableController } from "../useCases/ShowTable";
-import { addPointController } from "../useCases/AddPoint";
+import { showTeamController } from "../useCases/ShowTeam";
 const router = Router();
 
 router.post(
@@ -36,6 +38,12 @@ router.put(
 
 router.get("/:id", (request, response) => {
   return showTableController.handle(request, response);
+});
+router.get("/:idTable/:idIndex", (request, response) => {
+  return showTeamController.handle(request, response);
+});
+router.get("/", (request, response) => {
+  return getTablesController.handle(request, response);
 });
 
 router.post("/insert-point", (request, response) => {
